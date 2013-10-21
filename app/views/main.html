@@ -1,0 +1,36 @@
+<section class="hero-unit">
+
+    <tabset>
+        <tab ng-repeat="carro in carros" heading="{{carro.nome}} - {{carro.fabricante.nome}}" >
+            <div class="conteudo_tab">
+                <p ng-bind-template="Consumo médio Gasolina: {{carro.consumoMedioGas}}"></p>
+                <p ng-bind-template="Consumo médio Gasolina: {{carro.consumeMedioEta}}"></p>
+                <div class="botoes_abastecimento">
+                    <div class="btn-group">
+                        <button class="btn" ng-click="adicionarAbastecimento(carro)">MAIS</button>
+                    </div>
+                </div>
+                <div ng-repeat="abastecimento in carro.abastecimentos | orderBy:'dataOrdenacao':true" class="card" >
+                    <div ng-hide="abastecimento.edicao">
+                        <p ng-bind-template='Data: {{abastecimento.data}}'></p>
+                        <p ng-bind-template='Distancia: {{abastecimento.distanciaPercorrida}}'></p>
+                        <p ng-bind-template='Volume: {{abastecimento.volume}}'></p>
+                        <p ng-bind-template='Tipo de Combustivel: {{abastecimento.tipo}}'></p>
+                    </div>
+                    <div ng-show="abastecimento.edicao">
+                        <form ng-submit="salvarAbastecimento(abastecimento)">
+                            <p>Data: </p><input ng-model="abastecimento.data">
+                            <p>Distancia: </p><input ng-model="abastecimento.distanciaPercorrida">
+                            <p>Volume: </p><input ng-model="abastecimento.volume">
+                            <p>Tipo de Combustivel: </p><input ng-model="abastecimento.tipo">
+                            <input type="submit">
+                        </form>
+                    </div>
+
+                </div>
+            </div>
+        </tab>
+
+    </tabset>
+
+</section>
