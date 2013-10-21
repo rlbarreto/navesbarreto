@@ -49,5 +49,9 @@
   },
   "scripts": {
     "test": "grunt test"
-  }
+  },
+
+  "private": true,
+  "main": "server/main.js"
+
 }
